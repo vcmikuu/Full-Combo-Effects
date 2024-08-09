@@ -34,7 +34,7 @@ void DidActivate(HMUI::ViewController* self, bool firstActivation, bool addedToH
         auto* container = BSML::Lite::CreateScrollableSettingsContainer(self->get_transform());
         
         // Add Options  
-        AddConfigValueInputString(parent, getModConfig().FullComboText);
+        AddConfigValueInputString(container->get_transform(), getModConfig().FullComboText);
     }
 }
 
@@ -47,7 +47,7 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     }
     catch (const std::exception &e)
     {
-        getLogger().log(Logging::ERROR, "Ow! Failed to set text :/");
+        Logger.info(Logging::ERROR, "Ow! Failed to set text :/");
     }
 
     try
@@ -56,7 +56,7 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     }
     catch (const std::exception &e)
     {
-        getLogger().log(Logging::ERROR, "Ow! Failed to set color to background :(");
+        Logger.info(Logging::ERROR, "Ow! Failed to set color to background :(");
     }
 }
 
@@ -72,7 +72,7 @@ static void setNotFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     }
     catch (const std::exception &e)
     {
-        getLogger().log(Logging::ERROR, "Ow! Failed to set color to background :(");
+        Logger.info(Logging::ERROR, "Ow! Failed to set color to background :(");
     }
 }
 
