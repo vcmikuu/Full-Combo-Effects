@@ -12,9 +12,6 @@
 using namespace GlobalNamespace;
 using namespace TMPro;
 
-static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
-// Stores the ID and version of our mod, and is sent to
-// the modloader upon startup
 
 // Loads the config from disk using our modInfo, then returns it for use
 // other config tools such as config-utils don't use this config, so it can be
