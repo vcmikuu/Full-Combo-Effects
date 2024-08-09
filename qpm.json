@@ -72,6 +72,11 @@
       "id": "config-utils",
       "versionRange": "^1.4.2",
       "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.17.10",
+      "additionalData": {}
     }
   ]
 }

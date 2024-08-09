@@ -15,15 +15,6 @@ using namespace GlobalNamespace;
 using namespace TMPro;
 
 
-// Loads the config from disk using our modInfo, then returns it for use
-// other config tools such as config-utils don't use this config, so it can be
-// removed if those are in use
-Configuration &getConfig() {
-  static Configuration config(modInfo);
-  return config;
-}
-
-
 void DidActivate(HMUI::ViewController* self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling){
     if(firstActivation){
         // Make Touchable
@@ -62,9 +53,6 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
 
 static void setNotFullComboUI(UnityEngine::GameObject *clearedBannerGo)
 {
-    // no need to reset text to LEVEL CLEARED
-
-    // reset background to red color
     try
     {
         const auto originColor = UnityEngine::Color(1, 0.374, 0, 1);
@@ -111,6 +99,10 @@ MOD_EXPORT_FUNC void setup(CModInfo& info) {
 MOD_EXPORT_FUNC void late_load() {
     il2cpp_functions::Init();
 
+
+    BSML::Init();
+
+    BSML::Register::RegisterSettingsMenu("FullComboEffects", DidActivate, true);
     Logger.info("Installing hooks...");
 
     INSTALL_HOOK(Logger, Results);
