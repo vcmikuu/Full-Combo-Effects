@@ -43,11 +43,11 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
 {
     try
     {
-        clearedBannerGo->GetComponentsInChildren<TextMeshProUGUI *>()[0]->set_text(il2cpp_utils::newcsstr(getModConfig().FullComboText);
+        clearedBannerGo->GetComponentsInChildren<TextMeshProUGUI *>()[0]->set_text(getModConfig().FullComboText);
     }
     catch (const std::exception &e)
     {
-        Logger.info(Logging::ERROR, "Ow! Failed to set text :/");
+        
     }
 
     try
@@ -56,7 +56,7 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     }
     catch (const std::exception &e)
     {
-        Logger.info(Logging::ERROR, "Ow! Failed to set color to background :(");
+        
     }
 }
 
@@ -72,7 +72,7 @@ static void setNotFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     }
     catch (const std::exception &e)
     {
-        Logger.info(Logging::ERROR, "Ow! Failed to set color to background :(");
+        
     }
 }
 
