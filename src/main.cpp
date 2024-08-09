@@ -1,5 +1,7 @@
 #include "main.hpp"
 
+#include "custom-types/shared/register.hpp"
+
 #include "scotland2/shared/modloader.h"
 
 #include "GlobalNamespace/ResultsViewController.hpp"
