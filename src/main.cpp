@@ -43,7 +43,8 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
 {
     try
     {
-        clearedBannerGo->GetComponentsInChildren<TextMeshProUGUI *>()[0]->set_text(getModConfig().FullComboText);
+        std::string userId = getModConfig().FullComboText.GetValue();
+        clearedBannerGo->GetComponentsInChildren<TextMeshProUGUI *>()[0]->set_text(il2cpp_utils::StringW(userId));
     }
     catch (const std::exception &e)
     {
@@ -85,9 +86,9 @@ MAKE_HOOK_MATCH(Results, &ResultsViewController::SetDataToUI, void, ResultsViewC
         if (self->_levelCompletionResults->fullCombo)
         {
             self->_newHighScore = true;
-            setFullComboUI(self->clearedBannerGo);
+            setFullComboUI(self->_clearedBannerGo);
         } else {
-            setNotFullComboUI(self->clearedBannerGo);
+            setNotFullComboUI(self->_clearedBannerGo);
         }
     }
 }
