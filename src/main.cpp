@@ -80,11 +80,11 @@ MAKE_HOOK_MATCH(Results, &ResultsViewController::SetDataToUI, void, ResultsViewC
 {
     Results(self);
 
-    if (self->levelCompletionResults->levelEndStateType == LevelCompletionResults::LevelEndStateType::Cleared)
+    if (self->_levelCompletionResults->levelEndStateType == LevelCompletionResults::LevelEndStateType::Cleared)
     {
-        if (self->levelCompletionResults->fullCombo)
+        if (self->_levelCompletionResults->fullCombo)
         {
-            self->newHighScore = true;
+            self->_newHighScore = true;
             setFullComboUI(self->clearedBannerGo);
         } else {
             setNotFullComboUI(self->clearedBannerGo);
@@ -92,23 +92,31 @@ MAKE_HOOK_MATCH(Results, &ResultsViewController::SetDataToUI, void, ResultsViewC
     }
 }
 
-// Called at the early stages of game loading
-MOD_EXTERN_FUNC void setup(CModInfo *info) noexcept {
-  *info = modInfo.to_c();
 
-  getConfig().Load();
 
-  // File logging
-  Paper::Logger::RegisterFileContextId(PaperLogger.tag);
 
-  PaperLogger.info("Completed setup!");
+#pragma region Mod setup
+/// @brief Called at the early stages of game loading
+/// @param info
+/// @return
+MOD_EXPORT_FUNC void setup(CModInfo& info) {
+    info.id = MOD_ID;
+    info.version = VERSION;
+
+    Logger.info("Completed setup!");
 }
 
-// Called later on in the game loading - a good time to install function hooks
-MOD_EXTERN_FUNC void late_load() noexcept {
-  il2cpp_functions::Init();
+/// @brief Called later on in the game loading - a good time to install function hooks
+/// @return
+MOD_EXPORT_FUNC void late_load() {
+    il2cpp_functions::Init();
 
-  PaperLogger.info("Installing hooks...");
-  INSTALL_HOOK(getLogger(), Results);
-  PaperLogger.info("Installed all hooks!");
+    Logger.info("Installing hooks...");
+
+    INSTALL_HOOK(Logger, Results);
+
+    Logger.info("Installed all hooks!");
 }
+#pragma endregion
+
+

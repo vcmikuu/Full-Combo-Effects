@@ -27,4 +27,15 @@ void DidActivate(HMUI::ViewController* self, bool firstActivation, bool addedToH
 // log information from other files
 Configuration &getConfig();
 
-constexpr auto PaperLogger = Paper::ConstLoggerContext("fullcomboeffects");
+modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
+
+/// @brief A logger, useful for printing debug messages
+/// @return
+static constexpr auto Logger = Paper::ConstLoggerContext(MOD_ID "_" VERSION
+
+#define MOD_EXPORT __attribute__((visibility("default")))
+#ifdef __cplusplus
+#define MOD_EXPORT_FUNC extern "C" MOD_EXPORT
+#else
+#define MOD_EXPORT_FUNC MOD_EXPORT
+#endif
