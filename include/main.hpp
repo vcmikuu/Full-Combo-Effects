@@ -31,7 +31,7 @@ modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 
 /// @brief A logger, useful for printing debug messages
 /// @return
-static constexpr auto Logger = Paper::ConstLoggerContext(MOD_ID "_" VERSION)
+static constexpr auto Logger = Paper::ConstLoggerContext(MOD_ID "_" VERSION);
 
 #define MOD_EXPORT __attribute__((visibility("default")))
 #ifdef __cplusplus
