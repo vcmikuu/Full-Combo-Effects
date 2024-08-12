@@ -99,7 +99,7 @@ MOD_EXPORT_FUNC void setup(CModInfo& info) {
 MOD_EXPORT_FUNC void late_load() {
     il2cpp_functions::Init();
 
-
+    getModConfig().Init(modInfo);
     BSML::Init();
 
     BSML::Register::RegisterSettingsMenu("FullComboEffects", DidActivate, true);
