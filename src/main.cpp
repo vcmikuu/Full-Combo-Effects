@@ -34,7 +34,7 @@ static void setFullComboUI(UnityEngine::GameObject *clearedBannerGo)
     try
     {
         std::string userId = getModConfig().FullComboText.GetValue();
-        clearedBannerGo->GetComponentsInChildren<TextMeshProUGUI *>()[0]->set_text(StringW(userId));
+        clearedBannerGo->GetComponentsInChildren<CurvedTextMeshPro *>()[0]->set_text(StringW(userId));
     }
     catch (const std::exception &e)
     {
